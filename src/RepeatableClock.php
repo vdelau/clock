@@ -7,7 +7,7 @@ namespace VdeLau\Clock;
 use Psr\Clock\ClockInterface;
 
 /**
- * RepeatableClock is a facade that will always return a new DateTimeImmutable for the same timestamp of the first call to now().
+ * RepeatableClock is a facade that will always return the same timestamp of the first call to now().
  */
 class RepeatableClock implements ClockInterface
 {
@@ -22,7 +22,7 @@ class RepeatableClock implements ClockInterface
     public function now(): \DateTimeImmutable
     {
         // Save the first call to the clock
-        if (!$this->datetime instanceof \DateTimeImmutable) {
+        if (!isset($this->datetime)) {
             $this->datetime = $this->clock->now();
         }
         // Return a fresh copy every call

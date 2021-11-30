@@ -25,15 +25,4 @@ class TimeZonedClock implements ClockInterface
         $dt = $this->clock->now();
         return $dt->setTimezone($this->timeZone);
     }
-
-    public function getClock(): ClockInterface
-    {
-        return $this->clock;
-    }
-
-    public function getTimeZone(): \DateTimeZone
-    {
-        return $this->timeZone;
-    }
 }
-

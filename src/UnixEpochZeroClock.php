@@ -11,6 +11,6 @@ class UnixEpochZeroClock extends FixedClock
 {
     public function __construct()
     {
-        parent::__construct(new \DateTimeImmutable(@0, new \DateTimeZone('UTC')));
+        parent::__construct(new \DateTimeImmutable('@0', new \DateTimeZone('UTC')));
     }
 }

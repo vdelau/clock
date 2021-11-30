@@ -15,7 +15,9 @@ class ManualClock implements ClockInterface
 
     public function __construct(\DateTimeInterface|null $datetime = null)
     {
-        $this->setDateTime($datetime);
+        if ($datetime instanceof \DateTimeInterface) {
+            $this->setDateTime($datetime);
+        }
     }
 
     /**
@@ -26,7 +28,7 @@ class ManualClock implements ClockInterface
      */
     private function getCurrent(): \DateTimeImmutable
     {
-        if (!$this->current instanceof \DateTimeImmutable) {
+        if (!isset($this->current)) {
             throw new ClockStateException();
         }
         return $this->current;

@@ -16,12 +16,12 @@ class MultipliedClock implements ClockInterface
     {
         $this->clock = $clock ?: new SystemClock();
 
-        $this->base = $this->getMicrotimeFromClock();
+        $this->base = $this->getMicroTimeFromClock();
 
         $this->multiplier = $multiplier;
     }
 
-    private function getMicrotimeFromClock(): float
+    private function getMicroTimeFromClock(): float
     {
         $dt = $this->clock->now();
         $ts = $dt->format('U.u');
@@ -30,7 +30,7 @@ class MultipliedClock implements ClockInterface
 
     public function now(): \DateTimeImmutable
     {
-        $now = $this->getMicrotimeFromClock();
+        $now = $this->getMicroTimeFromClock();
         $real_diff = $now - $this->base;
         $ts = $this->base + ($real_diff * $this->multiplier);
         return new \DateTimeImmutable(sprintf('@%f', $ts));
