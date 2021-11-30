@@ -23,8 +23,7 @@ class TimeZonedClock implements ClockInterface
     public function now(): \DateTimeImmutable
     {
         $dt = $this->clock->now();
-        $dt->setTimezone($this->timeZone);
-        return new \DateTimeImmutable();
+        return $dt->setTimezone($this->timeZone);
     }
 
     public function getClock(): ClockInterface

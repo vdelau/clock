@@ -6,7 +6,7 @@ This repository provides a couple of `Psr\Clock` implementations, based on the d
 
 `SystemClock` is the most simple `Psr\Clock` implementation that always will return the current systemtime. It essential replaces `new \DateTimeImmuitable()`.
 
-## Timezone correction
+## Changing timezones
 
 `TimeZonedClock` and its descendants `UTCClock` and `LocalClock` are facades for other clock that will convert any clocks output to the desired timezone.
 
